@@ -1,0 +1,44 @@
+/* Main stylesheet for Hello Claude page */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    font-size: 3em;
+    text-align: center;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Add a subtle fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Add hover effect for the heading */
+h1:hover {
+    color: #555;
+    cursor: default;
+    transition: color 0.3s ease;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+}
