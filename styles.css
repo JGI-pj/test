@@ -1,27 +1,119 @@
 /* Main stylesheet for Hello Claude page */
 
+/* ========================================
+   CSS Variables / Custom Properties
+   ======================================== */
+:root {
+    /* Colors */
+    --color-primary: #333333;
+    --color-primary-hover: #555555;
+    --color-background: #f0f0f0;
+    --color-text-light: #666666;
+    --color-white: #ffffff;
+    
+    /* Typography */
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-hero: clamp(2rem, 5vw, 3rem);
+    --font-size-subtitle: clamp(1rem, 2vw, 1.25rem);
+    
+    /* Spacing */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+    
+    /* Animation */
+    --animation-duration: 0.3s;
+    --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    font-family: var(--font-family-base);
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    color: #333;
-    font-size: 3em;
+/* ========================================
+   Layout Components
+   ======================================== */
+.site-header {
+    padding: var(--spacing-medium);
+    background-color: var(--color-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigation {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-large);
+}
+
+.site-footer {
+    padding: var(--spacing-medium);
+    background-color: var(--color-white);
     text-align: center;
-    animation: fadeIn 1s ease-in;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Add a subtle fade-in animation */
-@keyframes fadeIn {
+.footer-text {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero-section {
+    text-align: center;
+    animation: fadeInUp 1s var(--animation-easing);
+}
+
+.hero-title {
+    margin: 0 0 var(--spacing-medium);
+    font-size: var(--font-size-hero);
+    font-weight: 700;
+    color: var(--color-primary);
+    transition: color var(--animation-duration) var(--animation-easing);
+    will-change: color;
+}
+
+.hero-title:hover {
+    color: var(--color-primary-hover);
+    cursor: default;
+}
+
+.hero-subtitle {
+    margin: 0;
+    font-size: var(--font-size-subtitle);
+    color: var(--color-text-light);
+    font-weight: 400;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -29,16 +121,19 @@ h1 {
     }
 }
 
-/* Add hover effect for the heading */
-h1:hover {
-    color: #555;
-    cursor: default;
-    transition: color 0.3s ease;
+/* ========================================
+   Media Queries
+   ======================================== */
+@media (max-width: 768px) {
+    .main-content {
+        padding: var(--spacing-medium);
+    }
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 2em;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
